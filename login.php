@@ -7,7 +7,6 @@ if (isset($_SESSION['user_id'])) {
   exit();
 }
 
-
   function error_alert($url){
     echo "
     <script>
@@ -20,8 +19,8 @@ if (isset($_SESSION['user_id'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $con->prepare("SELECT id, name FROM users WHERE email = ? AND password = ?");
-    $stmt->bind_param("ss", $email, $password);
+    $stmt = $con->prepare("SELECT id, name FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
